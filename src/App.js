@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Goal from "./components/Goal";
+import Accomplished from "./components/Accomplished";
+import Outstanding from "./components/Outstanding";
+import ExerciseList from "./components/ExerciseList";
+import ExerciseForm from "./components/ExerciseForm";
+import GoalForm from "./components/GoalForm";
+import Reset from "./components/Reset";
+import { AppProvider } from "./context/AppContext";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppProvider>
+      <h1>Weekly Exercise Tracker</h1>
+      <GoalForm />
+      <Goal />
+      <Accomplished />
+      <Outstanding />
+      <ExerciseList />
+      <ExerciseForm />
+      <Reset />
+    </AppProvider>
   );
-}
+};
 
 export default App;
