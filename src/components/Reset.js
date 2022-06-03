@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
 const Reset = () => {
   const { dispatch } = useContext(AppContext);
@@ -14,9 +16,11 @@ const Reset = () => {
   };
 
   return (
-    <button type="button" onClick={() => handleClick()}>
-      Reset
-    </button>
+    <Box textAlign="center" mt={5}>
+      <Button variant="outlined" onClick={() => handleClick()}>
+        Reset All
+      </Button>
+    </Box>
   );
 };
 

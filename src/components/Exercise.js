@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
-import DeleteIcon from "@mui/icons-material/Delete";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import IconButton from "@mui/material/IconButton";
 
 const Exercise = (props) => {
   const { dispatch } = useContext(AppContext);
@@ -13,11 +16,16 @@ const Exercise = (props) => {
   };
 
   return (
-    <li>
-      {props.type}
-      {props.duration}
-      <DeleteIcon onClick={handleDeleteExercise}></DeleteIcon>
-    </li>
+    <TableRow>
+      <TableCell>{props.day}</TableCell>
+      <TableCell>{props.type}</TableCell>
+      <TableCell>{props.duration}</TableCell>
+      <TableCell>
+        <IconButton edge="end" onClick={handleDeleteExercise}>
+          <DeleteForeverIcon></DeleteForeverIcon>
+        </IconButton>
+      </TableCell>
+    </TableRow>
   );
 };
 

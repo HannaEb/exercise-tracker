@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 const GoalForm = () => {
   const [goal, setGoal] = useState("");
   const { dispatch } = useContext(AppContext);
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-
+  const handleClick = () => {
     dispatch({
       type: "SET_GOAL",
       payload: goal,
@@ -16,14 +17,33 @@ const GoalForm = () => {
     setGoal("");
   };
   return (
-    <form onSubmit={onSubmit}>
-      <label>How many minutes would you like to exercise this week?</label>
-      <input
+    <Box
+      component="form"
+      mb={5}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "start",
+      }}
+    >
+      <TextField
+        required
+        label="Enter goal in minutes"
+        variant="filled"
+        size="small"
         value={goal}
         onChange={(event) => setGoal(event.target.value)}
-      ></input>
-      <button type="submit">Confirm</button>
-    </form>
+      />
+      <Button
+        variant="outlined"
+        sx={{
+          marginTop: 2,
+        }}
+        onClick={() => handleClick()}
+      >
+        Confirm
+      </Button>
+    </Box>
   );
 };
 
